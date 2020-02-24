@@ -34,6 +34,7 @@ const routes = {
       require('./routes/rulesfilter').default,
       require('./routes/user').default,
       require('./routes/syncdata').default,
+      require('./routes/syncdata').default,
 
     // comment unused routes
     // this will speed up builds
