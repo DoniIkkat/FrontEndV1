@@ -9,7 +9,7 @@ export var ColumnSpeedometerwidth = Speedometerwidth+10;
 export var ColumnSpeedometerheight = Speedometerheight - 150;
 
 export var headers = {
-        'Platform-CreditScoring':getstorage(),
+        'Platform-CreditScoring':'',
         'Authorization': auth,
         'content-type': 'application/json'
 }

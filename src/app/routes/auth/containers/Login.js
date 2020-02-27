@@ -73,20 +73,25 @@ export default class Login extends React.Component {
         info.listmenu = []
       var user = this.state.formlogin.user;
       var password = this.state.formlogin.password;
-      var url = suburlLogin+`?userid=`+user+`&password=`+password+` `;
-
+      var url = suburlLogin;
+        var param = {
+            userid:user,
+            password:password
+        }
         fetch(url,
           {
-              method: 'GET',
+              method: 'POST',
               headers: {
                   'Authorization': auth,
                   'content-type': 'application/json'
               },
+              body: JSON.stringify(param)
 
           })
           .then(response => response.json())
           .then(appList => {
               this.funconverlay("hide")
+
               if(user == appList.message){//isapproval
                   info.listmenu = appList.data.items
                   info.name = appList.data.name
@@ -239,9 +244,7 @@ export default class Login extends React.Component {
                         <section>
                           <label className="label">User</label>
                           <label className="input"> <i className="icon-append fa fa-user"/>
-                            <input type="email" name="email" data-smart-validate-input="" data-required="" data-email=""
-                                   data-message-required="Please enter your email address"
-                                   data-message-email="Please enter a VALID email address"
+                            <input type="email" name="email" data-smart-validate-input="" data-required=""
                                    onChange={this.onchangeuser.bind(this)}
                             />
                             <b className="tooltip tooltip-top-right"><i className="fa fa-user txt-color-teal"/>
